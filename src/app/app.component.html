@@ -3,26 +3,26 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Gestion des Produits</title>
+  <title>Gestion des Taches</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Gestion Produits</a>
+    <a class="navbar-brand" href="#">Gestion Taches</a>
     <!-- Links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" routerLink="/taches">Home</a>
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Produits
+          Taches
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Ajouter</a>
-          <a class="dropdown-item" href="#">Lister</a>
+          <a class="dropdown-item" routerLink="/add-tache">Ajouter</a>
+          <a class="dropdown-item" href="/taches">Lister</a>
         </div>
       </li>
     </ul>

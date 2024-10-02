@@ -1,0 +1,50 @@
+<div class="container">
+    <div>
+        <h2>Modifier une Tache :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Tache</label>
+            <input readonly type="number" [(ngModel)]="currentTache.idTache" name="idTache" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Tache</label>
+            <input type="text" [(ngModel)]="currentTache.nomTache" name="nomTache" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Description</label>
+            <!-- <input type="text" [(ngModel)]="currentTache.description" name="description" class="form-control"> -->
+            <textarea [(ngModel)]="currentTache.description" name="description" class="form-control"></textarea>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Statut</label>
+            <input type="text" [(ngModel)]="currentTache.statut" name="statut" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Date Echeance</label>
+            <input type="date" [ngModel]="currentTache.dateEcheance | date: 'yyyy-MM-dd'"
+                (ngModelChange)=" currentTache.dateEcheance= $event" name="dateEcheance" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Date Creation</label>
+            <input type="date" [ngModel]="currentTache.dateCreation | date: 'yyyy-MM-dd'"
+                (ngModelChange)=" currentTache.dateCreation= $event" name="dateCreation" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Projet</label>
+            <select class="form-control form-control-lg" id="idProjet" name="idProjet" [(ngModel)]="updatedIdProjet">
+                <option *ngFor="let projet of projets" [value]="projet.idProjet">
+                    {{projet.nomProjet}}
+                </option>
+            </select>
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="updateTache()" class="btn btn-success">Modifier</button>
+            <div>
+                <h3>
+                    <!-- {{message}} -->
+                </h3>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+    <div>
+        <h2>Ajouter une Tache :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Tache</label>
+            <input type="number" [(ngModel)]="newTache.idTache" name="idTache" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Tache</label>
+            <input type="text" [(ngModel)]="newTache.nomTache" name="nomTache" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Description</label>
+            <!-- <input type="text" [(ngModel)]="newTache.description" name="description" class="form-control"> -->
+            <textarea [(ngModel)]="newTache.description" name="description" class="form-control"></textarea>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Statut</label>
+            <input type="text" [(ngModel)]="newTache.statut" name="statut" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Date Echeance</label>
+            <input type="date" [(ngModel)]="newTache.dateEcheance" name="dateEcheance" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Date Creation</label>
+            <input type="date" [(ngModel)]="newTache.dateCreation" name="dateCreation" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Projet</label>
+            <select class="form-control form-control-lg" id="idProjet" name="idProjet" [(ngModel)]="newIdProjet">
+                <option *ngFor="let projet of projets" [value]="projet.idProjet">
+                    {{projet.nomProjet}}
+                </option>
+            </select>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="addTache()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>

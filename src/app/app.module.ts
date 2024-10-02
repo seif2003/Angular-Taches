@@ -4,17 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TachesComponent } from './taches/taches.component';
+import { AddTacheComponent } from './add-tache/add-tache.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateTacheComponent } from './update-tache/update-tache.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TachesComponent
+    TachesComponent,
+    AddTacheComponent,
+    UpdateTacheComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
