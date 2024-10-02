@@ -22,7 +22,8 @@ export class AddTacheComponent {
 
   ngOnInit() { 
     this.tacheService.listeProjets().subscribe(projets => {
-      this.projets = projets;
+      this.projets = projets._embedded.projets;
+      console.log(this.projets);
     });
   }
 

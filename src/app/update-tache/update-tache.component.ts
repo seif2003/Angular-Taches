@@ -21,7 +21,7 @@ export class UpdateTacheComponent {
 
   ngOnInit() {
     this.tacheService.listeProjets().subscribe(projets => {
-      this.projets = projets;
+      this.projets = projets._embedded.projets;
     });
     this.tacheService.consulterTache(this.activatedRoute.snapshot.params['id']).subscribe(tache => {
       this.currentTache = tache;

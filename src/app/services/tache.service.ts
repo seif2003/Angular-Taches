@@ -3,7 +3,7 @@ import { Tache } from '../model/tache.model';
 import { Projet } from '../model/projet.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { apiURL } from '../config';
+import { ProjetWrapped } from '../model/categorieWrapped.model';
 
 const HttpOptions = {
   headers: new HttpHeaders({
@@ -15,6 +15,9 @@ const HttpOptions = {
   providedIn: 'root'
 })
 export class TacheService {
+  apiURL = 'http://localhost:8080/taches/api';
+  apiURLProj = 'http://localhost:8080/taches/projet';
+
   taches! : Tache[];
   // projes! : Projet[];
 
@@ -82,25 +85,25 @@ export class TacheService {
   }
 
   listeTaches(): Observable<Tache[]> {
-    return this.http.get<Tache[]>(apiURL);
+    return this.http.get<Tache[]>(this.apiURL);
   }
 
   ajouterTache(tache: Tache): Observable<Tache> {
-    return this.http.post<Tache>(apiURL, tache, HttpOptions);
+    return this.http.post<Tache>(this.apiURL, tache, HttpOptions);
   }
 
   supprimerTache(id: number) {
-    const url = `${apiURL}/${id}`;
+    const url = `${this.apiURL}/${id}`;
     return this.http.delete(url, HttpOptions);
   }
 
   consulterTache(id: number): Observable<Tache> {
-    const url = `${apiURL}/${id}`;
+    const url = `${this.apiURL}/${id}`;
     return this.http.get<Tache>(url);
   }
 
   updateTache(tache: Tache): Observable<Tache> {
-    return this.http.put<Tache>(apiURL, tache, HttpOptions);
+    return this.http.put<Tache>(this.apiURL, tache, HttpOptions);
   }
 
   trierTaches() {
@@ -116,12 +119,15 @@ export class TacheService {
   }
 
   consulterProjet(id: number): Observable<Projet> {
-    return this.http.get<Projet>(`${apiURL}/proj/${id}`);
+    return this.http.get<Projet>(`${this.apiURL}/proj/${id}`);
   }
 
-  listeProjets(): Observable<Projet[]> {
-    return this.http.get<Projet[]>(`${apiURL}/proj`);
-  }
+  // listeProjets(): Observable<Projet[]> {
+  //   return this.http.get<Projet[]>(`${this.apiURL}/proj`);
+  // }
 
+  listeProjets(): Observable<ProjetWrapped> {
+    return this.http.get<ProjetWrapped>(this.apiURLProj);
+  }
 
 }
