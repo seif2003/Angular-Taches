@@ -8,13 +8,21 @@ import { AddTacheComponent } from './add-tache/add-tache.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateTacheComponent } from './update-tache/update-tache.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { RechercheParProjetComponent } from './recherche-par-projet/recherche-par-projet.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TachesComponent,
     AddTacheComponent,
-    UpdateTacheComponent
+    UpdateTacheComponent,
+    RechercheParProjetComponent,
+    RechercheParNomComponent,
+    SearchFilterPipe,
+    ListeCategoriesComponent
   ],
   imports: [
     BrowserModule,

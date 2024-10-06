@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Projets </label>
+        <select class="form-control form-control-lg" id="idProj" name="idProj" [(ngModel)]="IdProjet"
+            (change)="onChange()">
+            <option *ngFor="let proj of projets" value="{{proj.idProjet}}">
+                {{proj.nomProjet}}
+            </option>
+        </select>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                    <th>Date Echence</th>
+                    <th>Date Création</th>
+                    <th>Projet</th>
+                </tr>
+                <tbody *ngFor="let tache of taches">
+                    <tr>
+                        <td>{{tache.idTache}}</td>
+                        <td>{{tache.nomTache}}</td>
+                        <td>{{tache.description}}</td>
+                        <td>{{tache.statut}}</td>
+                        <td>{{tache.dateEcheance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{tache.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{tache.projet?.nomProjet}}</td>
+                        <!-- <td><a class="btn btn-danger" (click)="supprimerTache(tache)">Supprimer</a></td>
+                        <td><a class="btn btn-warning" [routerLink]="['/updateTache', tache.idTache]">Modifier</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -130,4 +130,14 @@ export class TacheService {
     return this.http.get<ProjetWrapped>(this.apiURLProj);
   }
 
+  rechercherParProjet(id: number): Observable<Tache[]> {
+    const url = `${this.apiURL}/tachesprojet/${id}`;
+    return this.http.get<Tache[]>(url);
+  }
+
+  rechercherParNom(nom: string): Observable<Tache[]> {
+    const url = `${this.apiURL}/tachesByName/${nom}`;
+    return this.http.get<Tache[]>(url);
+  }
+
 }
