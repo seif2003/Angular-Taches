@@ -13,6 +13,8 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { SearchFilterPipe } from './search-filter.pipe';
 import { ListeProjesComponent } from './liste-projes/liste-projes.component';
 import { UpdateProjetComponent } from './update-projet/update-projet.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UpdateProjetComponent } from './update-projet/update-projet.component';
     RechercheParNomComponent,
     SearchFilterPipe,
     ListeProjesComponent,
-    UpdateProjetComponent
+    UpdateProjetComponent,
+    LoginComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

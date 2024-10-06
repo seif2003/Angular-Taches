@@ -20,8 +20,8 @@
                         <td>{{tache.dateEcheance | date:'dd/MM/yyyy'}}</td>
                         <td>{{tache.dateCreation | date:'dd/MM/yyyy'}}</td>
                         <td>{{tache.projet?.nomProjet}}</td>
-                        <td><a class="btn btn-danger" (click)="supprimerTache(tache)">Supprimer</a></td>
-                        <td><a class="btn btn-warning" [routerLink]="['/updateTache', tache.idTache]">Modifier</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerTache(tache)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateTache', tache.idTache]">Modifier</a></td>
                     </tr>
                 </tbody>
             </table>
