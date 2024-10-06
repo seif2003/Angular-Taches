@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <app-update-projet 
+            [projet]="updatedProjet"
+            [ajout]="ajout"
+            (projetUpdated)="projetUpdated($event)"
+            (cancelEvent)="onCancel()"
+        ></app-update-projet>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Projet</th>
+                        <th>Description</th>
+                        <th>Date Debut</th>
+                        <th>Date Fin</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let proj of projets">
+                    <tr>
+                        <td>{{proj.idProjet}}</td>
+                        <td>{{proj.nomProjet}}</td>
+                        <td>{{proj.description}}</td>
+                        <td>{{proj.dateDebut | date:'dd/MM/yyyy'}}</td>
+                        <td>{{proj.dateFin | date:'dd/MM/yyyy'}}</td>
+                        <td><a class="btn btn-success" (click)="updateProjet(proj)">Editer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

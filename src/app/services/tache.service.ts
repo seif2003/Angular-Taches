@@ -140,4 +140,8 @@ export class TacheService {
     return this.http.get<Tache[]>(url);
   }
 
+  ajouterProjet(projet: Projet): Observable<Projet> {
+    return this.http.post<Projet>(this.apiURLProj, projet, HttpOptions);
+  }
+
 }

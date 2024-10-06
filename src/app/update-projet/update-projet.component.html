@@ -1,0 +1,30 @@
+<form>
+    <div [hidden]="ajout">
+        <label>ID Projet</label>
+        <input type="text" readonly [(ngModel)]="projet.idProjet" name="idProjet" class="form-control w-25">
+    </div>
+    <div>
+        <label>Nom Projet</label>
+        <input type="text" [(ngModel)]="projet.nomProjet" name="nomProjet" class="form-control"
+            placeholder="Entrez un nom de projet...">
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea [(ngModel)]="projet.description" name="description" class="form-control"
+            placeholder="Entrez une description..."></textarea>
+    </div>
+    <div>
+        <label>Date Debut</label>
+        <input type="date" (ngModelChange)=" projet.dateDebut= $event" [ngModel]="projet.dateDebut | date: 'yyyy-MM-dd'" name="dateDebut" class="form-control">
+    </div>
+    <div>
+        <label>Date Fin</label>
+        <input type="date" (ngModelChange)=" projet.dateFin= $event" [ngModel]="projet.dateFin | date: 'yyyy-MM-dd'" name="dateFin" class="form-control">
+    </div>
+
+    <div class="mt-2">
+        <button type="submit" [disabled]="!projet.nomProjet" class="btn btn-success"
+            (click)="saveProjet()">{{ ajout ? 'Ajouter' : 'Modifier'}}</button>
+        <button [hidden]="ajout" type="submit" class="btn btn-danger" (click)="cancel()">Annuler</button>
+    </div>
+</form>

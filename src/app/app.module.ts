@@ -11,7 +11,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { RechercheParProjetComponent } from './recherche-par-projet/recherche-par-projet.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { SearchFilterPipe } from './search-filter.pipe';
-import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
+import { ListeProjesComponent } from './liste-projes/liste-projes.component';
+import { UpdateProjetComponent } from './update-projet/update-projet.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ListeCategoriesComponent } from './liste-categories/liste-categories.co
     RechercheParProjetComponent,
     RechercheParNomComponent,
     SearchFilterPipe,
-    ListeCategoriesComponent
+    ListeProjesComponent,
+    UpdateProjetComponent
   ],
   imports: [
     BrowserModule,
