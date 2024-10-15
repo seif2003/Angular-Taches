@@ -4,6 +4,7 @@ import { Projet } from '../model/projet.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProjetWrapped } from '../model/categorieWrapped.model';
+import { AuthService } from './auth.service';
 
 const HttpOptions = {
   headers: new HttpHeaders({
@@ -18,10 +19,10 @@ export class TacheService {
   apiURL = 'http://localhost:8080/taches/api';
   apiURLProj = 'http://localhost:8080/taches/projet';
 
-  taches! : Tache[];
+  taches!: Tache[];
   // projes! : Projet[];
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private authService: AuthService) {
     // this.projes = [{
     //     idProjet: 1,
     //     nomProjet: "Projet 1",
@@ -85,25 +86,42 @@ export class TacheService {
   }
 
   listeTaches(): Observable<Tache[]> {
-    return this.http.get<Tache[]>(this.apiURL);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+    return this.http.get<Tache[]>(this.apiURL + "/all", { headers: httpHeaders });
   }
 
   ajouterTache(tache: Tache): Observable<Tache> {
-    return this.http.post<Tache>(this.apiURL, tache, HttpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt,'Content-Type': 'application/json' })
+    return this.http.post<Tache>(this.apiURL + "/addtache", tache, { headers: httpHeaders });
   }
 
+
   supprimerTache(id: number) {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.delete(url, HttpOptions);
+    const url = `${this.apiURL}/deltache/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+    return this.http.delete(url, { headers: httpHeaders });
   }
 
   consulterTache(id: number): Observable<Tache> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.get<Tache>(url);
+    const url = `${this.apiURL}/getbyid/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+    return this.http.get<Tache>(url, { headers: httpHeaders });
   }
 
+
   updateTache(tache: Tache): Observable<Tache> {
-    return this.http.put<Tache>(this.apiURL, tache, HttpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt, 'Content-Type': 'application/json' })
+    return this.http.put<Tache>(this.apiURL + "/updatetache", tache, { headers: httpHeaders });
   }
 
   trierTaches() {
@@ -119,7 +137,10 @@ export class TacheService {
   }
 
   consulterProjet(id: number): Observable<Projet> {
-    return this.http.get<Projet>(`${this.apiURL}/proj/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+    return this.http.get<Projet>(`${this.apiURL}/proj/${id}`,{headers:httpHeaders});
   }
 
   // listeProjets(): Observable<Projet[]> {
@@ -127,21 +148,37 @@ export class TacheService {
   // }
 
   listeProjets(): Observable<ProjetWrapped> {
-    return this.http.get<ProjetWrapped>(this.apiURLProj);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+
+    return this.http.get<ProjetWrapped>(this.apiURLProj,{headers:httpHeaders});
   }
 
   rechercherParProjet(id: number): Observable<Tache[]> {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+
     const url = `${this.apiURL}/tachesprojet/${id}`;
-    return this.http.get<Tache[]>(url);
+    return this.http.get<Tache[]>(url,{headers:httpHeaders});
   }
 
   rechercherParNom(nom: string): Observable<Tache[]> {
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt })
+
     const url = `${this.apiURL}/tachesByName/${nom}`;
-    return this.http.get<Tache[]>(url);
+    return this.http.get<Tache[]>(url,{headers:httpHeaders});
   }
 
   ajouterProjet(projet: Projet): Observable<Projet> {
-    return this.http.post<Projet>(this.apiURLProj, projet, HttpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({ "Authorization": jwt,'Content-Type': 'application/json' })
+
+    return this.http.post<Projet>(this.apiURLProj, projet, {headers:httpHeaders});
   }
 
 }
