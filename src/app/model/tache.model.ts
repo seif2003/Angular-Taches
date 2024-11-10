@@ -1,3 +1,4 @@
+import { Image } from "./image.model";
 import { Projet } from "./projet.model";
 
 export class Tache {
@@ -8,4 +9,7 @@ export class Tache {
     dateEcheance!: Date;
     dateCreation!: Date;
     projet!: Projet;
+    image! : Image
+    imageStr!:string
+    images!: Image[];
 }
