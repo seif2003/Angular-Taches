@@ -27,7 +27,7 @@ export class TachesComponent implements OnInit {
     this.chargerTachers();
   }
 
-  /*chargerTachers() {
+  chargerTachers() {
     this.tacheService.listeTaches().subscribe(taches => {
       this.taches = taches;
       
@@ -37,13 +37,13 @@ export class TachesComponent implements OnInit {
         }
       });
     });
-  }*/
-
-  chargerTachers() {
-    this.tacheService.listeTaches().subscribe(taches => {
-      this.taches = taches;
-    });
   }
+
+  // chargerTachers() {
+  //   this.tacheService.listeTaches().subscribe(taches => {
+  //     this.taches = taches;
+  //   });
+  // }
 
 
   supprimerTache(tache: Tache) {

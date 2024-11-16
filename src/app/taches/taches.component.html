@@ -21,7 +21,7 @@
                         <td>{{tache.dateEcheance | date:'dd/MM/yyyy'}}</td>
                         <td>{{tache.dateCreation | date:'dd/MM/yyyy'}}</td>
                         <td>{{tache.projet?.nomProjet}}</td>
-                        <td><img class="card-img-top img-responsive" src="{{apiurl+'/image/loadfromFS/'+tache.idTache}}"
+                        <td><img class="card-img-top img-responsive" src = "{{tache.imageStr}}" 
                                 style="height :50px;width:100px">
                         </td>
                         <td><a *ngIf="authService.isAdmin()" class="btn btn-danger"

@@ -38,19 +38,19 @@ export class AddTacheComponent {
   //     this.router.navigate(['taches']);
   //   });
   // }
-  /*addTache() {
-    this.tacheService
-      .uploadImage(this.uploadedImage, this.uploadedImage.name)
-      .subscribe((img: Image) => {
-        this.newTache.image = img;
-        this.newTache.projet = this.projets.find(cat => cat.idProjet == this.newIdProjet)!;
-        this.tacheService
-          .ajouterTache(this.newTache)
-          .subscribe(() => {
-            this.router.navigate(['taches']);
-          });
-      });
-  }*/
+  // addTache() {
+  //   this.tacheService
+  //     .uploadImage(this.uploadedImage, this.uploadedImage.name)
+  //     .subscribe((img: Image) => {
+  //       this.newTache.image = img;
+  //       this.newTache.projet = this.projets.find(cat => cat.idProjet == this.newIdProjet)!;
+  //       this.tacheService
+  //         .ajouterTache(this.newTache)
+  //         .subscribe(() => {
+  //           this.router.navigate(['taches']);
+  //         });
+  //     });
+  // }
 
   addTache() {
     this.newTache.projet = this.projets.find(proj => proj.idProjet == this.newIdProjet)!;
@@ -58,20 +58,34 @@ export class AddTacheComponent {
       .ajouterTache(this.newTache)
       .subscribe((tache) => {
         this.tacheService
-          .uploadImageFS(this.uploadedImage,
-            this.uploadedImage.name, tache.idTache)
-          .subscribe((response: any) => { }
+          .uploadImageTache(this.uploadedImage, this.uploadedImage.name, tache.idTache)
+          .subscribe((response: any) => { this.router.navigate(['taches']); }
           );
-        this.router.navigate(['taches']);
       });
   }
 
 
-  onImageUpload(event: any) {
-    this.uploadedImage = event.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(this.uploadedImage);
-    reader.onload = (_event) => { this.imagePath = reader.result; }
-  }
 
-}
+    // addTache() {
+    //   this.newTache.projet = this.projets.find(proj => proj.idProjet == this.newIdProjet)!;
+    //   this.tacheService
+    //     .ajouterTache(this.newTache)
+    //     .subscribe((tache) => {
+    //       this.tacheService
+    //         .uploadImageFS(this.uploadedImage,
+    //           this.uploadedImage.name, tache.idTache)
+    //         .subscribe((response: any) => { }
+    //         );
+    //       this.router.navigate(['taches']);
+    //     });
+    // }
+
+
+    onImageUpload(event: any) {
+      this.uploadedImage = event.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(this.uploadedImage);
+      reader.onload = (_event) => { this.imagePath = reader.result; }
+    }
+
+  }
